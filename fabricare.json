@@ -1,0 +1,16 @@
+{
+	"solution": {
+		"name" : "vendor-opencv",
+		"type" : "xyo-cpp",
+		"projects": [
+			{
+				"name" : "opencv",
+				"SPDX-License-Identifier": "Apache-2.0",
+				"sourceLink" : "https://github.com/opencv/opencv",
+				"version" : "4.10.0",
+				"noVersion" : true
+			}
+		],
+		"releaseName" : "opencv"
+	}
+}
