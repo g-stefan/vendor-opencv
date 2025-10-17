@@ -59,24 +59,41 @@ runInPath("temp/cmake", function () {
 	exitIf(Shell.system("ninja clean"));
 });
 
+if (Fabricare.isDynamic()) {
+	Shell.copyDirRecursively("output/x64/vc17/bin", "output/bin");
+	Shell.copyDirRecursively("output/x64/vc17/lib", "output/lib");
+};
+
 if (Fabricare.isStatic()) {
 	Shell.copyDirRecursively("output/x64/vc17/staticlib", "output/lib");
 };
-Shell.copyFile("output/lib/opencv_calib3d4100.lib", "output/lib/opencv_calib3d.lib");
-Shell.copyFile("output/lib/opencv_core4100.lib", "output/lib/opencv_core.lib");
-Shell.copyFile("output/lib/opencv_dnn4100.lib", "output/lib/opencv_dnn.lib");
-Shell.copyFile("output/lib/opencv_features2d4100.lib", "output/lib/opencv_features2d.lib");
-Shell.copyFile("output/lib/opencv_flann4100.lib", "output/lib/opencv_flann.lib");
-Shell.copyFile("output/lib/opencv_gapi4100.lib", "output/lib/opencv_gapi.lib");
-Shell.copyFile("output/lib/opencv_highgui4100.lib", "output/lib/opencv_highgui.lib");
-Shell.copyFile("output/lib/opencv_imgcodecs4100.lib", "output/lib/opencv_imgcodecs.lib");
-Shell.copyFile("output/lib/opencv_imgproc4100.lib", "output/lib/opencv_imgproc.lib");
-Shell.copyFile("output/lib/opencv_ml4100.lib", "output/lib/opencv_ml.lib");
-Shell.copyFile("output/lib/opencv_objdetect4100.lib", "output/lib/opencv_objdetect.lib");
-Shell.copyFile("output/lib/opencv_photo4100.lib", "output/lib/opencv_photo.lib");
-Shell.copyFile("output/lib/opencv_stitching4100.lib", "output/lib/opencv_stitching.lib");
-Shell.copyFile("output/lib/opencv_video4100.lib", "output/lib/opencv_video.lib");
-Shell.copyFile("output/lib/opencv_videoio4100.lib", "output/lib/opencv_videoio.lib");
+
+Shell.mkdirRecursivelyIfNotExists("output/lib/cmake/opencv");
+Shell.copyFile("output/LICENSE", "output/lib/cmake/opencv/LICENSE");
+Shell.copyFile("output/OpenCVConfig-version.cmake", "output/lib/cmake/opencv/OpenCVConfig-version.cmake");
+Shell.copyFile("output/OpenCVConfig.cmake", "output/lib/cmake/opencv/OpenCVConfig.cmake");
+
+Shell.copyFile("output/lib/opencv_calib3d4120.lib", "output/lib/opencv_calib3d.lib");
+Shell.copyFile("output/lib/opencv_core4120.lib", "output/lib/opencv_core.lib");
+Shell.copyFile("output/lib/opencv_dnn4120.lib", "output/lib/opencv_dnn.lib");
+Shell.copyFile("output/lib/opencv_features2d4120.lib", "output/lib/opencv_features2d.lib");
+Shell.copyFile("output/lib/opencv_flann4120.lib", "output/lib/opencv_flann.lib");
+Shell.copyFile("output/lib/opencv_gapi4120.lib", "output/lib/opencv_gapi.lib");
+Shell.copyFile("output/lib/opencv_highgui4120.lib", "output/lib/opencv_highgui.lib");
+Shell.copyFile("output/lib/opencv_imgcodecs4120.lib", "output/lib/opencv_imgcodecs.lib");
+Shell.copyFile("output/lib/opencv_imgproc4120.lib", "output/lib/opencv_imgproc.lib");
+Shell.copyFile("output/lib/opencv_ml4120.lib", "output/lib/opencv_ml.lib");
+Shell.copyFile("output/lib/opencv_objdetect4120.lib", "output/lib/opencv_objdetect.lib");
+Shell.copyFile("output/lib/opencv_photo4120.lib", "output/lib/opencv_photo.lib");
+Shell.copyFile("output/lib/opencv_stitching4120.lib", "output/lib/opencv_stitching.lib");
+Shell.copyFile("output/lib/opencv_video4120.lib", "output/lib/opencv_video.lib");
+Shell.copyFile("output/lib/opencv_videoio4120.lib", "output/lib/opencv_videoio.lib");
+
+Shell.removeDirRecursively("output/x64");
+Shell.removeFile("output/LICENSE");
+Shell.removeFile("output/OpenCVConfig-version.cmake");
+Shell.removeFile("output/OpenCVConfig.cmake");
+Shell.removeFile("output/setup_vars_opencv4.cmd");
 
 Shell.filePutContents("temp/build.done.flag", "done");
 
