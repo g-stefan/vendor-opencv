@@ -1,5 +1,6 @@
 {
 	"solution": {
+		"namespace" : "xyo",
 		"name" : "vendor-opencv",
 		"type" : "xyo-cpp",
 		"projects": [
@@ -7,7 +8,7 @@
 				"name" : "opencv",
 				"SPDX-License-Identifier": "Apache-2.0",
 				"sourceLink" : "https://github.com/opencv/opencv",
-				"version" : "4.12.0",
+				"version" : "4.14.0",
 				"noVersion" : true
 			}
 		],
