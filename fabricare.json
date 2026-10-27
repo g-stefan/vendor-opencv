@@ -1,6 +1,5 @@
 {
 	"solution": {
-		"namespace" : "xyo",
 		"name" : "vendor-opencv",
 		"type" : "xyo-cpp",
 		"projects": [
